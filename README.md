@@ -31,15 +31,15 @@ usersテーブル
 |username|strnig|null:false|
 |grade|string|null:false|
 ### Association
-- has_many :shifts
+- has_many :attendances
 - hsa_many :commens
 
-shiftsテーブル
+attendancesテーブル
 |column|type|option|
 |------|----|------|
 |start_time|string||
 |end_time|string||
-|user_id|integer|null:false, foreign_key: true|
+|user|references|null:false, foreign_key: true|
 ### Association
 - belongs_to :user
 - has_many :comments
@@ -48,9 +48,9 @@ commentsテーブル
 |column|type|option|
 |------|----|------|
 |text|text||
-|user_id|integer|null:false, foreign_key: true|
-|shift_id|integer|null:false, foreign_key: true|
+|user|references|null:false, foreign_key: true|
+|attendance|references|null:false, foreign_key: true|
 ### Association
 - belongs_to :user
-- belongs_to :shift
+- belongs_to :attendance
 
