@@ -1,42 +1,18 @@
-.cont_principal
-  .cont_centrar
-    .cont_login
-      = form_for(@user, url: session_path(resource_name)) do |f|
-        .cont_tabs_login
-          %ul.ul_tabs
-            %li.active
-              %a{:href => "#", :onclick => "sign_in()"} SIGN IN
-              %span.linea_bajo_nom
-            %li
-              %a{:href => "#up", :onclick => "sign_up()"} SIGN UP
-              %span.linea_bajo_nom
-        .cont_text_inputs
-          = f.text_field :username, autofocus: true, placeholder: 'NAME', class: 'input_form_sign'
-          = f.email_field :email, autofocus: true, placeholder: 'EMAIL', class: 'input_form_sign.d_block.active_inp'
-          = f.password_field :password, autocomplete: "off", placeholder: 'PASSWORD', class: 'input_form_sign.d_block.active_inp'
-          = f.password_field :confirm_password, autocomplete: 'off', placeholder: 'CONFIRM PASSWORD', class: 'input_form_sign'
-          %a.link_forgot_pass.d_block{:href => "#"} Forgot Password ?
-          .terms_and_cons.d_none
-            %p
-              %input{:name => "terms_and_cons", :type => "checkbox"}/
-              %label{:for => "terms_and_cons"} Accept  Terms and Conditions.
-        .cont_btn
-          = f.submit 'SIGN IN', class: 'btn_sign'
+.form-wrapper
+  .form-title Sign In
+  = form_for(@user, url: session_path(resource_name)) do |f|
+    .form-item
+      = f.email_field :email, autofocus: true, placeholder: 'EMAIL'
+      
+    .form-item
+      = f.password_field :password, autocomplete: "off", placeholder: 'PASSWORD'
+      
+    .button-panel
+      = f.submit 'SIGN IN', class: 'button'
+      
+  .form-footer
+    %p
+      %a{:href => "#"} Create an account
+    %p
+      %a{:href => "#"} Forgot password?
 
--# %h2 Log in
--# = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
--#   .field
--#     = f.label :email
--#     %br/
--#     = f.email_field :email, autofocus: true, autocomplete: "email"
--#   .field
--#     = f.label :password
--#     %br/
--#     = f.password_field :password, autocomplete: "current-password"
--#   - if devise_mapping.rememberable?
--#     .field
--#       = f.check_box :remember_me
--#       = f.label :remember_me
--#   .actions
--#     = f.submit "Log in"
--# = render "users/shared/links"
